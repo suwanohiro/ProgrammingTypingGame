@@ -1,0 +1,82 @@
+body {
+    user-select: none;
+    font-size: 3rem;
+    background-color: lightblue;
+}
+
+table, div {
+    width: 50%;
+    margin-left: 25%;
+}
+
+table {
+    margin-top: 5vh;
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+
+    tr {
+        td {
+            text-align: right;
+            padding-right: 1rem;
+            border-bottom: 0.025rem solid black;
+
+            $titleWidth: 45%;
+
+            &:nth-child(1) {
+                width: $titleWidth;
+            }
+
+            &:nth-child(2) {
+                width: calc(100% - $titleWidth);
+            }
+        }
+        
+        &:nth-last-child(1) {
+            td {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+#combo, #maxCombo, #missCount, #inputCount {
+    &::after {
+        content: " 回";
+    }
+}
+
+#accuracy {
+    &::after {
+        content: " %";
+    }
+}
+
+div {
+    margin-top: 2.5vh;
+    
+    button {
+        width: 45%;
+        margin: 1rem;
+        font-size: 1.5rem;
+        border: 0.1rem solid black;
+        border-radius: 0.5rem;
+    }
+
+    button {
+        background-color: #0078D4;
+        font-weight: bold;
+        color: white;
+
+        $margin_horizontal: 2.5%;
+        margin-left: $margin_horizontal;
+        margin-right: $margin_horizontal;
+        
+        $padding_vertical: 1rem;
+        padding-top: $padding_vertical;
+        padding-bottom: $padding_vertical;
+
+        &:active {
+            scale: 0.95;
+        }
+    }
+}

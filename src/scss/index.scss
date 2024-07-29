@@ -1,0 +1,34 @@
+body {
+    background-color: lightblue;
+    padding: 2.5rem;
+}
+
+select, option, button {
+    font-size: 1.5rem;
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+}
+
+select {
+    width: 20rem;
+    padding: 0.5rem;
+}
+
+div {
+    margin-top: 5vh;
+}
+
+button {
+    background-color: #0078D4;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem;
+
+    $padding_horizontal: 3rem;
+    padding-left: $padding_horizontal;
+    padding-right: $padding_horizontal;
+    
+    &:active {
+        scale: 0.95;
+    }
+}

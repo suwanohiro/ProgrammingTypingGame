@@ -1,4 +1,4 @@
-import Game from "./Modules/Game/Game.js";
+import Game from "./Game.js";
 
 export default class MainApplication {
     public static main(): void {

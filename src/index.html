@@ -1,63 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <script src="./js/index.js" type="module"></script>
+    <title>swn ReservedWord TypingGame</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index/index.js" type="module"></script>
 </head>
 
 <body>
-    <div id="targetString" data-error="false" data-targetString=""></div>
-    <div id="info">
-        <meter id="current" min="0" max="100" value="100"></meter>
-        <br>ゲーム残り時間&emsp;<span id="time"></span>
-        <meter id="gameTime"></meter>
-        <table id="status">
-            <tr>
-                <th>現在のスコア</th>
-                <th>問題履歴</th>
-            </tr>
-            <tr>
-                <td id="scoreInfo">
-                    <table>
-                        <tr>
-                            <td>スコア</td>
-                            <td id="score">
-                                0
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                コンボ
-                            </td>
-                            <td id="combo">
-                                0
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>最大コンボ</td>
-                            <td id="maxCombo">0</td>
-                        </tr>
-                        <tr>
-                            <td>入力数</td>
-                            <td id="inputCount">0</td>
-                        </tr>
-                        <tr>
-                            <td>入力ミス数</td>
-                            <td id="missCount">0</td>
-                        </tr>
-                        <tr>
-                            <td>正答率</td>
-                            <td id="accuracy">0</td>
-                        </tr>
-                    </table>
-                </td>
-                <td id="History"></td>
-            </tr>
-        </table>
+    <h1>swn ReservedWord TypingGame</h1>
+    <h2>言語を選択してください</h2>
+    <hr>
+    <select id="langSelect">
+        <option value="none">選択してください</option>
+    </select>
+    <div>
+        <button id="start">スタート</button>
     </div>
 </body>
 

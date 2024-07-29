@@ -1,3 +1,6 @@
+import FileAction from "../Modules/FileAction/FileAction.js";
+import { resultData } from "../Modules/resultData.js";
+
 export default class Game {
     // -----------------------------------------------
     // public (static)
@@ -6,12 +9,17 @@ export default class Game {
         new Game().start();
     }
 
+    constructor() {
+        this._questionList = new Array<string>();
+    }
+
     // -----------------------------------------------
     // private
     // -----------------------------------------------
 
     private _isActive: boolean = false;
     private _gameTime: number = 120;    // ゲーム時間 (秒)
+    private _questionList: Array<string>;
 
     /**
      * スペース文字と記号を置き換える
@@ -28,34 +36,10 @@ export default class Game {
      * @returns 選択された文字列
      */
     private __createRandomQuestion(): string {
-        const questionList: Array<string> = [
-            "Hello, World!",
-            "int main(void)",
-            "float",
-            "double",
-            "number",
-            "private",
-            "public",
-            "class",
-            "function",
-            "return",
-            "continue",
-            "if",
-            "for",
-            "string",
-            "const",
-            "typedef",
-            "template",
-            "typename",
-            "document",
-            "true",
-            "false",
-            "while"
-        ];
         const min = 0;
-        const max = questionList.length - 1;
+        const max = this._questionList.length - 1;
         const random: number = Math.floor(Math.random() * (max + 1 - min)) + min;
-        const result: string = questionList[random];
+        const result: string = this._questionList[random];
         const targetString: string = document.getElementById("targetString")!.dataset.targetString!;
         return (targetString == result) ? this.__createRandomQuestion() : this.__convertSpace(result, "SpaceToSymbol");
     }
@@ -67,6 +51,18 @@ export default class Game {
         const target: HTMLElement = document.getElementById("targetString")!;
         target.dataset.error = "false";
         this._isActive = true;
+
+        const tmp = location.href.split("?");
+
+        if (tmp.length < 2) {
+            alert("言語が選択されていません。");
+            location.href = "./index.html";
+            return;
+        }
+
+        const langFileName: string = tmp[1]!;
+        const flie: FileAction = new FileAction(`res/${langFileName}.csv`);
+        this._questionList = flie.arrayRead();
 
         this.__nextQuestion();
     }
@@ -250,7 +246,25 @@ export default class Game {
             if (gameTime.value == 0) {
                 // ゲーム終了処理
                 this._isActive = false;
-                location.reload();
+                const lang: string = location.href.split("?")[1];
+
+                const score: string = document.getElementById("score")!.innerHTML;
+                const combo: string = document.getElementById("combo")!.innerHTML;
+                const maxCombo: string = document.getElementById("maxCombo")!.innerHTML;
+                const inputCount: string = document.getElementById("inputCount")!.innerHTML;
+                const missCount: string = document.getElementById("missCount")!.innerHTML;
+                const accuracy: string = document.getElementById("accuracy")!.innerHTML;
+
+                const result: resultData = {
+                    Score: score,
+                    Combo: combo,
+                    MaxCombo: maxCombo,
+                    InputCount: inputCount,
+                    MissCount: missCount,
+                    Accuracy: accuracy
+                };
+
+                location.href = `./result.html?${lang}?${encodeURI(JSON.stringify(result))}`;
             }
 
             if (current.value == 0) {
