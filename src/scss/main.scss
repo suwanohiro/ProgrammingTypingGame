@@ -1,17 +1,31 @@
 body {
     font-size: x-large;
+    user-select: none;
+    background-color: lightblue;
+}
+
+meter {
+    display: block;
+    width: 100%;
+    height: 5vh;
 }
 
 #targetString {
     width: 100%;
-    height: 7rem;
+    height: 15vh;
     text-align: center;
-    font-size: 5rem;
+    font-size: 10vh;
     font-weight: bold;
-    background-color: white;
+    background-color: lightgoldenrodyellow;
     border: 0.1rem solid black;
+    
+    display: block;
+    
+    position: fixed;
+    left: 0;
+    top: 0;
 
-    $padding: 1rem;
+    $padding: 2.5vh;
     padding-top: $padding;
     padding-bottom: $padding;
 }
@@ -23,7 +37,6 @@ body {
 .afterInput {
     color: gray;
 }
-
 
 #targetString[data-error="true"] {
     animation: hurueru .1s 3;
@@ -37,4 +50,101 @@ body {
     50% {transform: translate(0px, 2px) rotateZ(0deg)}
     75% {transform: translate(2px, 0px) rotateZ(-1deg)}
     100% {transform: translate(0px, 0px) rotateZ(0deg)}
+}
+
+#info {
+    width: 95vw;
+    height: 70.25vh;
+
+    position: fixed;
+    left: 0;
+    top: 20.25vh;
+
+    padding: 2.5vw;
+
+    overflow-y: scroll;
+}
+
+#status {
+    width: 100%;
+    height: 57.5vh;
+    th {
+        height: 7vh;
+        font-size: 2.5vh;
+        border-bottom: 0.1rem solid black;
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+    th, td {
+        width: 50%;
+    }
+}
+
+#History {
+    position: relative;
+    height: 50vh;
+    overflow: auto;
+}
+
+.questionHistory {
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+    display: inline-block;
+    
+    background-color: lightyellow;
+
+    font-size: 1.5rem;
+
+    $padding_vertical: 0.5rem;
+    $padding_horizontal: 1rem;
+    padding-top: $padding_vertical;
+    padding-bottom: $padding_vertical;
+    padding-left: $padding_horizontal;
+    padding-right: $padding_horizontal;
+
+    margin: 0.5rem;
+    
+    &:hover {
+        background-color: lightgoldenrodyellow;
+    }
+}
+
+#scoreInfo {
+    font-size: 2rem;
+    
+    table {
+        width: 100%;
+    }
+
+    tr {
+        td {
+            text-align: right;
+            padding-right: 1rem;
+            
+            $titleWidth: 45%;
+
+            &:nth-child(1) {
+                width: $titleWidth;
+            }
+
+            &:nth-child(2) {
+                width: calc(100% - $titleWidth);
+            }
+        }
+    }
+    
+    #combo, #maxCombo, #missCount, #inputCount {
+        &::after {
+            content: " 回";
+        }
+    }
+    
+    #accuracy {
+        &::after {
+            content: " %";
+        }
+    }
 }
