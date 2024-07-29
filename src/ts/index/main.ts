@@ -7,6 +7,14 @@ export default class MainApplication {
     }
 
     public start(): void {
+        window.addEventListener("keydown", (event: KeyboardEvent) => {
+            if (event.key == "Enter") {
+                const start: HTMLButtonElement = document.getElementById("start") as HTMLButtonElement;
+                start.click();
+            }
+        });
+
+
         const lang: FileAction = new FileAction("res/Language.csv");
         const langArray: Array<string> = lang.arrayRead();
 
