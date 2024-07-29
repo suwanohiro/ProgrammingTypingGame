@@ -1,0 +1,19 @@
+{
+  "name": "web_db_test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cleanup": "rimraf src/js src/css",
+    "build": "npm run cleanup && tsc -p tsconfig.json && npx sass --no-source-map --style compressed src/scss:src/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/types": "^7.17.0",
+    "rimraf": "^6.0.1",
+    "sass": "^1.77.8",
+    "typescript": "^5.5.4"
+  },
+  "description": ""
+}
