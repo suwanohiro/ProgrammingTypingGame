@@ -148,3 +148,17 @@ meter {
         }
     }
 }
+
+#countDown {
+    position: fixed;
+    left: 0;
+    top: 35vh;
+
+    width: 100%;
+
+    font-size: 20vh;
+
+    background-color: #FFFFFFF0;
+    
+    text-align: center;
+}
